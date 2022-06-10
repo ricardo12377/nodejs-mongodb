@@ -1,14 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const config = require("./config");
 
 const app = express();
 const router = express.Router();
 
 mongoose
-  .connect(
-    "mongodb+srv://zakum023:zakum024@api.jrwy8.mongodb.net/?retryWrites=true&w=majority"
-  )
+  .connect(config.connectionString)
   .then(() => console.log("banco conectado"))
   .catch((err) => {
     console.log("Cannot connect to the database", err);
